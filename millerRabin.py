@@ -1,9 +1,12 @@
 import random
 
 def Test(number):
+	if number % 2 == 0 and not (number == 2):
+		return str(number) + " is Not prime"
+	
 	K, Q = find_kq(number)
 	if(K < 1) or (Q % 2 == 0):
-		return "K is either less than 1 or Q is not Odd"
+		return "composite"
 	
 	if number - 1 != pow(2, K) * Q:
 		return str(number) + " - 1 is not equal pow(2, "+ str(K) +") * " + str(Q)
@@ -11,7 +14,6 @@ def Test(number):
 	A = a_random(number)
 	print("K = " + str(K)+  ", Q = " + str(Q) +", A = "+str(A)+", Number "+ str(number)+", ", end=" ")
 	
-
 	if (pow(A,Q) % number) == 1:
 		return "inconclusive"
 
@@ -40,3 +42,4 @@ print(Test(7919)) #"inconclusive"
 print(Test(5869)) #"inconclusive"
 print(Test(7853)) #"inconclusive"
 print(Test(7919)) #"inconclusive"
+print(Test(12)) #"Not Prime"
