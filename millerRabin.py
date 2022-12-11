@@ -21,9 +21,11 @@ def Test(number):
 
 	return "composite"
 
+#Generates a random value
 def a_random(number):
 	return int(1 + (random.random()  * number))
 
+#Used to find K and Q Values
 def find_kq(number):
 	for k in range(10000):
 		for q in range(1000000):
@@ -32,6 +34,9 @@ def find_kq(number):
 					return (k, q)
 	return (0,0)
 
-print(Test(29))
-print(Test(1499))
-print(Test(7919))
+print(Test(29)) #"inconclusive"
+print(Test(1499)) #"inconclusive"
+print(Test(7919)) #"inconclusive"
+print(Test(5869)) #"inconclusive"
+print(Test(7853)) #"inconclusive"
+print(Test(7919)) #"inconclusive"
