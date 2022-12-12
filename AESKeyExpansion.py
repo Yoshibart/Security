@@ -2,6 +2,9 @@ def keyExpansion(key):
 	keys = []
 	counter = 0
 
+	Rcon = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36]
+	con = 0
+
 	while(counter < len(key)):
 		keys.append([key[counter:counter+8]])
 		counter+=8
@@ -11,7 +14,8 @@ def keyExpansion(key):
 		if i % 4 == 0:
 			tempKey = rotWord(tempKey)
 			tempKey = subWord(tempKey)
-			tempKey = rCon(tempKey)
+			tempKey = rCon(tempKey, Rcon[con])
+			con += 1
 		keys[i] = XOR(keys[i - 4], tempKey)
 	return keys
 
@@ -19,6 +23,9 @@ key = "0f1571c947d9e8590cb7add6af7f6798"
 
 def rotWord(tempKey):
 	return tempKey[2:len(tempKey)] + tempKey[0:2]
+
+def rCon(tempKey, con):
+	return hex(int(tempKey[0:2],16) ^ con)[2:] + tempKey[2:]
 
 def sBox():
 	Box =  []
