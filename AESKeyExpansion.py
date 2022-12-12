@@ -19,7 +19,8 @@ def keyExpansion(key):
 		keys[i] = XOR(keys[i - 4], tempKey)
 	return keys
 
-key = "0f1571c947d9e8590cb7add6af7f6798"
+def XOR(one, four):
+	return [hex(int(one, 16) ^ int(four, 16))[2:]]
 
 def rotWord(tempKey):
 	return tempKey[2:len(tempKey)] + tempKey[0:2]
@@ -48,5 +49,7 @@ def subWord(tempKey):
 
 	return subTemp
 	
+key = "0f1571c947d9e8590cb7add6af7f6798"
+
 for i in keyExpansion(key):
 	print(i)
