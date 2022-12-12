@@ -1,4 +1,7 @@
 def keyExpansion(key):
+	if len(key) < 16:
+		return "Not a 16 length() key"
+		
 	keys = []
 	counter = 0
 
@@ -20,7 +23,10 @@ def keyExpansion(key):
 	return keys
 
 def XOR(one, four):
-	return [hex(int(one, 16) ^ int(four, 16))[2:]]
+	fi = hex(int(one, 16) ^ int(four, 16))[2:]
+	if len(fi) % 2 == 1:
+		fi = "0" + fi
+	return [fi]
 
 def rotWord(tempKey):
 	return tempKey[2:len(tempKey)] + tempKey[0:2]
