@@ -34,15 +34,12 @@ def sBox():
 def subWord(tempKey):
 	subTemp = ""
 	Box = sBox()
-	letters = {"a":"10", "b":"11", "c":"12", "d":"13", "e":"14", "f":"15",
-				"0":"0", "1":"1", "2":"2", "3":"3", "4":"4", "5":"5", "6":"6",
-				"7":"7", "8":"8", "9":"9"}
 	for i in range(0,len(tempKey),2):
 		f = tempKey[i:i+2]
-		key = letters[f[0:1]]+','+letters[f[1:2]]
+		key = str(int(f[0:1], 16))+','+str(int(f[1:2], 16))
 		subTemp += Box[key]
 
 	return subTemp
-
+	
 for i in keyExpansion(key):
 	print(i)
