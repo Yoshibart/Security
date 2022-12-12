@@ -16,7 +16,7 @@ def keyExpansion(key):
 			tempKey = subWord(tempKey)
 			tempKey = rCon(tempKey, Rcon[con])
 			con += 1
-		keys[i] = XOR(keys[i - 4], tempKey)
+		keys.append(XOR(keys[i - 4][0], tempKey))
 	return keys
 
 def XOR(one, four):
@@ -52,4 +52,4 @@ def subWord(tempKey):
 key = "0f1571c947d9e8590cb7add6af7f6798"
 
 for i in keyExpansion(key):
-	print(i)
+	print(i, end="\n")
