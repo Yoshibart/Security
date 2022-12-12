@@ -22,18 +22,21 @@ def keyExpansion(key):
 		keys.append(XOR(keys[i - 4][0], tempKey))
 	return keys
 
+#Bitwise Excusive OR
 def XOR(one, four):
 	fi = hex(int(one, 16) ^ int(four, 16))[2:]
 	if len(fi) % 2 == 1:
 		fi = "0" + fi
 	return [fi]
 
+#byte Rotation
 def rotWord(tempKey):
 	return tempKey[2:len(tempKey)] + tempKey[0:2]
 
 def rCon(tempKey, con):
 	return hex(int(tempKey[0:2],16) ^ con)[2:] + tempKey[2:]
 
+#Creates SBox
 def sBox():
 	Box =  []
 	sBox = {}
@@ -44,7 +47,8 @@ def sBox():
 		for j in range(0, 16):
 			sBox[str(i) + "," + str(j)] = Box[i][j]
 	return sBox
-	
+
+#Byte Subsititution
 def subWord(tempKey):
 	subTemp = ""
 	Box = sBox()
@@ -57,5 +61,6 @@ def subWord(tempKey):
 	
 key = "0f1571c947d9e8590cb7add6af7f6798"
 
+#Prints Keys
 for i in keyExpansion(key):
 	print(i, end="\n")
