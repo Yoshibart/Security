@@ -17,14 +17,14 @@ def monoalpabetic(letters):
 
 	occur = createSeries(occur,"occur").keys()
 	frequency = createSeries(frequency,"frequency").keys()
-	mapped = mapping(frequency,occur)
+	mapped = mapping(occur,frequency)
 	return 
 
 def createSeries(letters, name):
  	return pd.Series(letters,name = name).sort_values(ascending=False)
 
-def mapping(frequency, occur):
-	return {a:b for a,b in zip(frequency, occur)}
+def mapping(occur, frequency):
+	return {a:b for a,b in zip(occur, frequency)}
 
 cipher = "UZQSOVUOHXMOPVGPOZPEVSGZWSZOPFPESXUDBMETSXAIZVUEPHZHMDZSHZOWSFPAPPDTSVPQUZWYMXUZUHSXEPYEPOPDZSZUFPOMBZWPFUPZHMDJUDTMOHMQ"
 print(monoalpabetic(cipher))
