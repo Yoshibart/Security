@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def monoalpabetic(letters):
 	letters = letters.upper()
@@ -16,8 +17,6 @@ def monoalpabetic(letters):
 
 	occur = createSeries(occur,"occur")
 	frequency = createSeries(frequency,"frequency")
-	print(occur)
-	print(frequency)
 	return
 
 def createSeries(letters, name):
