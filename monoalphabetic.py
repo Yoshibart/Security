@@ -15,12 +15,16 @@ def monoalpabetic(letters):
 	for i in occur.keys():
 		occur[i] = round((occur[i] / len(letters)) * 100, 2)
 
-	occur = createSeries(occur,"occur")
-	frequency = createSeries(frequency,"frequency")
-	return
+	occur = createSeries(occur,"occur").keys()
+	frequency = createSeries(frequency,"frequency").keys()
+	mapped = mapping(frequency,occur)
+	return 
 
 def createSeries(letters, name):
  	return pd.Series(letters,name = name).sort_values(ascending=False)
+
+def mapping(frequency, occur):
+	return {a:b for a,b in zip(frequency, occur)}
 
 cipher = "UZQSOVUOHXMOPVGPOZPEVSGZWSZOPFPESXUDBMETSXAIZVUEPHZHMDZSHZOWSFPAPPDTSVPQUZWYMXUZUHSXEPYEPOPDZSZUFPOMBZWPFUPZHMDJUDTMOHMQ"
 print(monoalpabetic(cipher))
