@@ -25,14 +25,11 @@ def monoalpabetic(letters, num):
 	
 	swappedletters = ["*"]*len(letters)
 
-	try:
-		for i in frequency[0:num]:
-			for j in range(len(letters)):
-				if letters[j] == i:
-					swappedletters[j] = mapped[i]
-			print("".join(swappedletters))
-	except:
-		pass
+	for i in frequency[0:num]:
+		for j in range(len(letters)):
+			if letters[j] == i:
+				swappedletters[j] = mapped[i]
+		print("".join(swappedletters))
 
 def createSeries(letters, name):
  	return pd.Series(letters,name = name).sort_values(ascending=False)
