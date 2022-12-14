@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import string
 
 def monoalpabetic(letters, num):
 	letters = letters.upper()
@@ -14,7 +14,11 @@ def monoalpabetic(letters, num):
 			occur[i]+=1
 	for i in occur.keys():
 		occur[i] = round((occur[i] / len(letters)) * 100, 2)
-
+	
+	for i in string.ascii_uppercase:
+		if i not in occur:
+			occur[i] = 0.00
+	
 	occur = createSeries(occur,"occur").keys()
 	frequency = createSeries(frequency,"frequency").keys()
 	mapped = mapping(occur,frequency)
