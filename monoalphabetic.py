@@ -33,11 +33,14 @@ def monoalpabetic(letters, num):
 	swappedletters = ["*"]*len(letters)
 
 	#Swaps the ciphertext frequency for english frequency
-	for i in frequency[0:num]:
-		for j in range(len(letters)):
-			if letters[j] == i:
-				swappedletters[j] = mapped[i]
-		print("".join(swappedletters))
+	try:
+		for i in frequency[0:num]:
+			for j in range(len(letters)):
+				if letters[j] == i:
+					swappedletters[j] = mapped[i]
+			print("".join(swappedletters))
+	except:
+		pass
 
 #Creates a series using pandas
 def createSeries(letters, name):
